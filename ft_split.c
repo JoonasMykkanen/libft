@@ -110,10 +110,7 @@ char	**ft_split(char const *s, char c)
 		buf = get_len(s, c, &cur);
 		arr[y] = malloc(sizeof(char) * (buf + 1));
 		if (!arr[y])
-		{
 			handle_leaks(arr, y);
-			return (NULL);
-		}
 		write_word(s, arr[y], buf, cur);
 		y++;
 	}
