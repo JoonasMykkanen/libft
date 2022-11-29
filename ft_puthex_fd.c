@@ -14,10 +14,10 @@
 
 void	ft_puthex_fd(unsigned long long num, int fd)
 {
-	int 	i;
-	char 	c;
+	int		i;
+	char	c;
 	int		temp;
-	char	*buf[17];
+	char	buf[17];
 
 	i = 0;
 	while (num != 0)
@@ -26,16 +26,16 @@ void	ft_puthex_fd(unsigned long long num, int fd)
 		if (temp < 10)
 		{
 			c = temp + 48;
-			buf[i] = &c;
+			buf[i] = c;
 		}
 		else
 		{
 			c = temp + 87;
-			buf[i] = &c;
+			buf[i] = c;
 		}
 		num = num / 16;
 		i++;
 	}
 	while (--i >= 0)
-		ft_putchar_fd(*buf[i], fd);
+		ft_putchar_fd(buf[i], fd);
 }

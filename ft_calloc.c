@@ -18,10 +18,10 @@ void	*ft_calloc(size_t count, size_t size)
 	void	*ptr;
 
 	if (count == 0 || size == 0)
-    	return calloc (1, 1);
+		return (calloc (1, 1));
 	len = count * size;
- 	if (len / size != count)
-    	return (NULL);
+	if (len / size != count)
+		return (NULL);
 	ptr = malloc(len);
 	if (ptr)
 	{

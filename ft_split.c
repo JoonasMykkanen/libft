@@ -112,7 +112,7 @@ char	**ft_split(char const *s, char c)
 		if (!arr[y])
 		{
 			handle_leaks(arr, y);
-			return(NULL);
+			return (NULL);
 		}
 		write_word(s, arr[y], buf, cur);
 		y++;
