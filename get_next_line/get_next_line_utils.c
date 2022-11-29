@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-void	*gnl_memcpy(void *dst, const void *src, size_t n)
+void	*ft_gnl_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t			i;
 	unsigned char	*d;
