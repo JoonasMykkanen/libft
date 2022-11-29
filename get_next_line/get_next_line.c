@@ -29,8 +29,8 @@ static void	handle_overflow(unsigned int ret, char *temp, char **buff)
 	len = ret - len;
 	if (len == 0)
 		return ;
-	storage = ft_gnl_strldup(temp + index, len);
-	*buff = ft_gnl_strldup(storage, len);
+	storage = gnl_strldup(temp + index, len);
+	*buff = gnl_strldup(storage, len);
 	if (!*buff || len < 1)
 	{
 		free(storage);
@@ -47,11 +47,11 @@ static char	*build_str(char *storage, char *temp, int ret, int *trigger)
 
 	i = -1;
 	if (temp == NULL)
-		return (ft_gnl_strjoin("", storage));
+		return (gnl_strjoin("", storage));
 	buf = malloc(index + ret + 2);
 	if (!buf)
 		return (NULL);
-	ft_gnl_memcpy(buf, storage, index);
+	gnl_memcpy(buf, storage, index);
 	while (++i < ret)
 	{
 		buf[index + i] = temp[i];
@@ -82,7 +82,7 @@ static char	*read_line(int fd, int ret, char *buf, char **buff)
 	while (ret)
 	{
 		temp = NULL;
-		if (ft_gnl_strlen(storage, 0) != 0)
+		if (gnl_strlen(storage, 0) != 0)
 			temp = build_str(storage, NULL, gnl_strlen(storage, 0), &trigger);
 		free(storage);
 		storage = build_str(temp, buf, ret, &trigger);
@@ -103,17 +103,17 @@ char	*line_from_buff(int len, char **buff)
 	char	*temp;
 	int		size;
 
-	if (ft_gnl_memchr(*buff, '\n', ft_gnl_strlen(*buff, 0)))
-		len = ft_gnl_strlen(*buff, 42);
+	if (gnl_memchr(*buff, '\n', gnl_strlen(*buff, 0)))
+		len = gnl_strlen(*buff, 42);
 	else
-		len = ft_gnl_strlen(*buff, 0);
-	size = ft_gnl_strlen(*buff, 0) - (size_t)len;
-	line = ft_gnl_strldup(*buff, len + 1);
+		len = gnl_strlen(*buff, 0);
+	size = gnl_strlen(*buff, 0) - (size_t)len;
+	line = gnl_strldup(*buff, len + 1);
 	if (size > 0)
 	{
-		temp = ft_gnl_strldup(*buff + len + 1, size);
+		temp = gnl_strldup(*buff + len + 1, size);
 		free(*buff);
-		*buff = ft_gnl_strldup(temp, size);
+		*buff = gnl_strldup(temp, size);
 		free(temp);
 		return (line);
 	}
@@ -132,17 +132,17 @@ char	*get_next_line(int fd)
 
 	if (buff)
 	{
-		if (ft_gnl_memchr(buff, '\n', ft_gnl_strlen(buff, 0)))
+		if (gnl_memchr(buff, '\n', gnl_strlen(buff, 0)))
 			return (line_from_buff(-1, &buff));
 		temp = line_from_buff(-1, &buff);
 		storage = read_line(fd, 0, buf, &buff);
-		if (storage == NULL && ft_gnl_strlen(temp, 0) < 1)
+		if (storage == NULL && gnl_strlen(temp, 0) < 1)
 		{
 			free(temp);
 			free(storage);
 			return (NULL);
 		}
-		line = ft_gnl_strjoin(temp, storage);
+		line = gnl_strjoin(temp, storage);
 		free(temp);
 		free(storage);
 		return (line);

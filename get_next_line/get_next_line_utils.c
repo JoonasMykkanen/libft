@@ -12,7 +12,7 @@
 
 #include "get_next_line.h"
 
-void	*ft_gnl_memcpy(void *dst, const void *src, size_t n)
+void	*gnl_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t			i;
 	unsigned char	*d;
@@ -33,7 +33,7 @@ void	*ft_gnl_memcpy(void *dst, const void *src, size_t n)
 	return (dst);
 }
 
-void	*ft_gnl_memchr(const void *s, int c, size_t n)
+void	*gnl_memchr(const void *s, int c, size_t n)
 {
 	int				i;
 	unsigned char	ch;
@@ -56,7 +56,7 @@ void	*ft_gnl_memchr(const void *s, int c, size_t n)
 	return (NULL);
 }
 
-char	*ft_gnl_strjoin(char const *s1, char const *s2)
+char	*gnl_strjoin(char const *s1, char const *s2)
 {
 	int		i;
 	int		j;
@@ -84,7 +84,7 @@ char	*ft_gnl_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-size_t	ft_gnl_strlen(char const *s, int mode)
+size_t	gnl_strlen(char const *s, int mode)
 {
 	int	i;
 
@@ -102,7 +102,7 @@ size_t	ft_gnl_strlen(char const *s, int mode)
 	return (i);
 }
 
-char	*ft_gnl_strldup(char *src, int len)
+char	*gnl_strldup(char *src, int len)
 {
 	char	*dst;
 

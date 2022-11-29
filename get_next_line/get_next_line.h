@@ -25,10 +25,10 @@
 # include <sys/types.h>
 
 char	*get_next_line(int fd);
-char	*ft_gnl_strldup(char *src, int len);
+char	*gnl_strldup(char *src, int len);
 size_t	gnl_strlen(char const *s, int mode);
-void	*ft_gnl_memchr(const void *s, int c, size_t n);
-char	*ft_gnl_strjoin(char const *s1, char const *s2);
-void	*ft_gnl_memcpy(void *dst, const void *src, size_t n);
+void	*gnl_memchr(const void *s, int c, size_t n);
+char	*gnl_strjoin(char const *s1, char const *s2);
+void	*gnl_memcpy(void *dst, const void *src, size_t n);
 
 #endif
