@@ -16,7 +16,7 @@
 # include <stdarg.h>
 
 # ifndef LIBFT_H
-#  include "libft/libft.h"
+#  include "libft.h"
 # endif
 
 int	ft_printf(const char *s, ...);
