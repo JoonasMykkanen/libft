@@ -20,11 +20,12 @@ ft_strrchr.c ft_substr.c ft_tolower.c ft_toupper.c ft_memchr.c ft_memcmp.c\
 ft_strtrim.c ft_strnstr.c ft_calloc.c ft_strmapi.c ft_striteri.c ft_split.c\
 ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c ft_lstlast.c\
 ft_puthex_lower_fd.c ft_puthex_upper_fd.c ft_memrcpy.c ft_hexlen.c\
-get_next_line.c get_next_line_utils.c
+get_next_line.c get_next_line_utils.c ft_printf.c convert_c.c\
+convert_d_i.c convert_p.c convert_s.c convert_u.c convert_x.c\
 
 SRC_O = $(SRC:.c=.o)
 
-INCLUDES = libft.h get_next_line.h
+INCLUDES = libft.h get_next_line.h ft_printf.h
 
 FLAGS = -Wall -Werror -Wextra -I $(INCLUDES)
 
