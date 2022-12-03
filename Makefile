@@ -22,6 +22,7 @@ ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstadd_back.c ft_lstlast.c\
 ft_puthex_lower_fd.c ft_puthex_upper_fd.c ft_memrcpy.c ft_hexlen.c\
 get_next_line.c get_next_line_utils.c ft_printf.c convert_c.c\
 convert_d_i.c convert_p.c convert_s.c convert_u.c convert_x.c\
+convert_precentage.c
 
 SRC_O = $(SRC:.c=.o)
 
