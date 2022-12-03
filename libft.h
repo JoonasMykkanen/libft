@@ -50,6 +50,7 @@ char	*ft_strchr(const char *s, int c);
 int		ft_hexlen(unsigned long long num);
 char	*ft_strrchr(const char *s, int c);
 char	**ft_split(char const *s, char c);
+char	*ft_itoa_hex(unsigned long long num);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_lstadd_back(t_list **lst, t_list *new);
