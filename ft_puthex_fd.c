@@ -12,16 +12,17 @@
 
 #include "libft.h"
 
-void	ft_puthex_fd(unsigned long long num, int fd)
+char	*ft_puthex_fd(unsigned long long num, int fd)
 {
 	int		i;
 	char	c;
 	int		temp;
+	char	*str;
 	char	buf[17];
 
 	i = 0;
 	if (num == 0)
-		ft_putnbr_fd(0, fd);
+		return (0);
 	while (num != 0)
 	{
 		temp = num % 16;
@@ -37,6 +38,8 @@ void	ft_puthex_fd(unsigned long long num, int fd)
 		}
 		num = num / 16;
 	}
+	temp = -1;
 	while (--i >= 0)
-		ft_putchar_fd(buf[i], fd);
+		str[++temp] = buf[i];
+	return (str);
 }
