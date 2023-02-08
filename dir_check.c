@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   dir_check.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,43 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-static int	ft_overflow(int neg)
+void	dir_check(char *file)
 {
-	if (neg == 1)
-		return (-1);
-	if (neg == -1)
-		return (0);
-	return (0);
-}
+	int	fd;
+	char	buf[1];
 
-int	ft_atoi(const char *str)
-{
-	int			i;
-	int			neg;
-	long long	sum;
-
-	i = 0;
-	sum = 0;
-	neg = 1;
-	if (!str)
-		return (0);
-	while (((str[i] < 14 && str[i] > 8) || str[i] == ' '))
-		i++;
-	if (str[i] == '-')
+	fd = open(file, O_RDONLY);
+	if (fd < 0)
+		exit(-1);
+	if (read(fd, buf, 1) == -1)
 	{
-		neg = -1;
-		i++;
+		close(fd);
+		perror("dir check");
+		exit(-1);
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] <= '9' && str[i] >= '0')
-	{
-		sum = sum * 10 + (str[i] - '0');
-		if (sum < 0)
-			return (ft_overflow(neg));
-		i++;
-	}
-	return (sum * neg);
+	close(fd);
 }

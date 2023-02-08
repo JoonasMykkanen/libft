@@ -35,6 +35,7 @@ int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
 int		ft_isdigit(int c);
+void    dir_check(char *file);
 char	*ft_strdup(char *src);
 char	*ft_itoa(long long n);
 int		ft_lstsize(t_list *lst);
