@@ -32,7 +32,7 @@ FLAGS = -Wall -Werror -Wextra -I $(INCLUDES)
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(SRC_O)
 	cc -c $(FLAGS) $(SRC)
 	ar rc $(NAME) $(SRC_O)
 
