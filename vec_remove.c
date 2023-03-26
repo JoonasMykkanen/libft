@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dir_check.c                                        :+:      :+:    :+:   */
+/*   vec_remove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:07:30 by jmykkane          #+#    #+#             */
-/*   Updated: 2022/10/25 16:07:31 by jmykkane         ###   ########.fr       */
+/*   Created: 2022/10/26 16:04:53 by jmykkane          #+#    #+#             */
+/*   Updated: 2022/10/26 16:04:54 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vec.h"
 
-void	dir_check(char *file)
+int	vec_remove(t_vec *src, size_t index)
 {
-	int		fd;
-	char	buf[1];
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		exit(-1);
-	if (read(fd, buf, 1) == -1)
+	if (!src || index > src->len)
+		return (-1);
+	if (index == src->len)
 	{
-		close(fd);
-		perror("dir check");
-		exit(-1);
+		src->len--;
+		return (1);
 	}
-	close(fd);
+	ft_memmove(
+		vec_get(src, index),
+		&src->memory[src->elem_size * (index + 1)],
+		(src->len - index) * src->elem_size);
+	src->len--;
+	return (1);
 }

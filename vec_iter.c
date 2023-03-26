@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dir_check.c                                        :+:      :+:    :+:   */
+/*   vec_iter.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:07:30 by jmykkane          #+#    #+#             */
-/*   Updated: 2022/10/25 16:07:31 by jmykkane         ###   ########.fr       */
+/*   Created: 2022/10/26 16:04:53 by jmykkane          #+#    #+#             */
+/*   Updated: 2022/10/26 16:04:54 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vec.h"
 
-void	dir_check(char *file)
+int	vec_iter(t_vec *src, void (*f) (void *))
 {
-	int		fd;
-	char	buf[1];
+	size_t	idx;
 
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		exit(-1);
-	if (read(fd, buf, 1) == -1)
+	if (!src || !src->memory || !(*f))
+		return (-1);
+	idx = -1;
+	while (++idx < src->len)
 	{
-		close(fd);
-		perror("dir check");
-		exit(-1);
+		f(&src->memory[src->elem_size * idx]);
 	}
-	close(fd);
+	return (1);
 }

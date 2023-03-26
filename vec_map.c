@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dir_check.c                                        :+:      :+:    :+:   */
+/*   vec_map.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:07:30 by jmykkane          #+#    #+#             */
-/*   Updated: 2022/10/25 16:07:31 by jmykkane         ###   ########.fr       */
+/*   Created: 2022/10/26 16:04:53 by jmykkane          #+#    #+#             */
+/*   Updated: 2022/10/26 16:04:54 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vec.h"
 
-void	dir_check(char *file)
+int	vec_map(t_vec *dst, t_vec *src, void (*f) (void *))
 {
-	int		fd;
-	char	buf[1];
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		exit(-1);
-	if (read(fd, buf, 1) == -1)
+	if (!dst || !src || !src->memory)
+		return (-1);
+	else if (!dst->memory)
 	{
-		close(fd);
-		perror("dir check");
-		exit(-1);
+		if (vec_new(dst, src->len, src->elem_size) < 0)
+			return (-1);
 	}
-	close(fd);
+	if (vec_copy(dst, src) < 0)
+		return (-1);
+	if (vec_iter(dst, f) < 0)
+		return (-1);
+	return (1);
 }

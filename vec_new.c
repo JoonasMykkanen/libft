@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dir_check.c                                        :+:      :+:    :+:   */
+/*   vec_new.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:07:30 by jmykkane          #+#    #+#             */
-/*   Updated: 2022/10/25 16:07:31 by jmykkane         ###   ########.fr       */
+/*   Created: 2022/10/26 16:04:53 by jmykkane          #+#    #+#             */
+/*   Updated: 2022/10/26 16:04:54 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vec.h"
 
-void	dir_check(char *file)
+int	vec_new(t_vec *dst, size_t init_len, size_t elem_size)
 {
-	int		fd;
-	char	buf[1];
-
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		exit(-1);
-	if (read(fd, buf, 1) == -1)
+	if (!dst || elem_size == 0)
+		return (-1);
+	dst->alloc_size = init_len * elem_size;
+	dst->elem_size = elem_size;
+	dst->len = 0;
+	if (init_len == 0)
+		dst->memory = NULL;
+	else
 	{
-		close(fd);
-		perror("dir check");
-		exit(-1);
+		dst->memory = malloc(dst->alloc_size);
+		if (!dst->memory)
+			return (-1);
 	}
-	close(fd);
+	return (1);
 }

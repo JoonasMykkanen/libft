@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   dir_check.c                                        :+:      :+:    :+:   */
+/*   vec_push.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmykkane <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/25 16:07:30 by jmykkane          #+#    #+#             */
-/*   Updated: 2022/10/25 16:07:31 by jmykkane         ###   ########.fr       */
+/*   Created: 2022/10/26 16:04:53 by jmykkane          #+#    #+#             */
+/*   Updated: 2022/10/26 16:04:54 by jmykkane         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "vec.h"
 
-void	dir_check(char *file)
+int	vec_push(t_vec *dst, void *src)
 {
-	int		fd;
-	char	buf[1];
+	size_t	new_size;
 
-	fd = open(file, O_RDONLY);
-	if (fd < 0)
-		exit(-1);
-	if (read(fd, buf, 1) == -1)
+	if (!dst || !src)
+		return (-1);
+	else if (!dst->memory)
 	{
-		close(fd);
-		perror("dir check");
-		exit(-1);
+		if (vec_new(dst, 1, dst->elem_size) < 0)
+			return (-1);
 	}
-	close(fd);
+	if (dst->elem_size * dst->len >= dst->alloc_size)
+	{
+		if (vec_resize(dst, dst->len * 2) < 0)
+			return (-1);
+	}
+	ft_memcpy(&dst->memory[dst->elem_size * dst->len], src, dst->elem_size);
+	dst->len++;
+	return (1);
 }
