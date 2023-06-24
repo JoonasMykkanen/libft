@@ -18,4 +18,4 @@ Dynamic vector is a small library of memory management functions that behave mor
 `push(), pop(), new(), delete()` etc..
 
 ## getnextline䷉
-This function read's a fd one line at a time. After diving into it turned out to be harder than 
+This function read's a fd one line at a time. After diving into it turned out to be harder than expected.
