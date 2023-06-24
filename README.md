@@ -1,5 +1,5 @@
-# libft
-### C standard library functions reinvented🤓
+# libft / reinventing fire🔥
+### C standard library functions from scratch🤓
 Since we are only allowed to use functions we have written ourselves, this repo contains most of the functions that are needed for other project's during my school.
 
 ### Important note
