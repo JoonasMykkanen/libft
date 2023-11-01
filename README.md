@@ -1,6 +1,6 @@
 # libft / reinventing fire🔥
 ### C standard library functions from scratch🤓
-Since we are only allowed to use functions we have written ourselves, this repo contains most of the functions that are needed for other project's during my school. There are also some usefull functions outside of stdlib added here.
+Since we are only allowed to use functions we have written ourselves, this repo contains most of the functions that are needed for other project's during my studies. There are also some usefull functions outside of stdlib added here.
 
 ### Important note
 This was my schools first project, I started writing it with 0 knowledge of C or any other programming language what so ever.
